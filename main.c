@@ -9,7 +9,7 @@ void INIT(void){
         exit(EXIT_FAILURE);
    }
 }
-void WRITE_TO_PARENT(char[100] child_massage){
+void WRITE_TO_PARENT(char child_massage[100]){
     close(pipefd2[0]);
     write(pipefd2[1],child_massage,strlen(child_massage)+1);
     close(pipefd2[1]);
@@ -23,7 +23,7 @@ void READ_FROM_PARENT(void){
     printf("Child receive message from parent!\n");
     printf("Receive message: %s\n",temp);
 }
-void WRITE_TO_CHILD(char[100] parent_massage){
+void WRITE_TO_CHILD(char parent_massage[100]){
     close(pipefd1[0]);
     write(pipefd1[1],parent_massage,strlen(parent_massage)+1);
     close(pipefd1[1]);
